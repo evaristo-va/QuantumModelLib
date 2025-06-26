@@ -42,6 +42,7 @@ qml_twod_rjdi2014_m = $(OBJ_DIR)/TwoD_RJDI2014_m.o
 qml_twod_valahu2022_m = $(OBJ_DIR)/TwoD_Valahu2022_m.o
 qml_twod_m = $(OBJ_DIR)/TwoD_m.o
 qml_uracil_m = $(OBJ_DIR)/Uracil_m.o
+qml_thiophene_m = $(OBJ_DIR)/Thiophene_m.o
 qml_vibronic_m = $(OBJ_DIR)/Vibronic_m.o
 qml_dmabn_m = $(OBJ_DIR)/dmabn_m.o
 qml_fulvene_m = $(OBJ_DIR)/fulvene_m.o
@@ -108,6 +109,7 @@ $(OBJ_DIR)/Model_m.o : \
           $(qml_twod_valahu2022_m) \
           $(qml_vibronic_m) \
           $(qml_uracil_m) \
+          $(qml_thiophene_m) \
           $(qml_fulvene_m) \
           $(qml_dmabn_m) \
           $(qml_oned_photons_m) \
@@ -319,6 +321,12 @@ $(OBJ_DIR)/TwoD_m.o : \
           $(qdutil_m) \
           $(addnsvm_m)
 $(OBJ_DIR)/Uracil_m.o : \
+          $(qdutil_numparameters_m) \
+          $(qml_empty_m) \
+          $(qdutil_m) \
+          $(qmllib_utillib_m) \
+          $(addnsvm_m)
+$(OBJ_DIR)/Thiophene_m.o : \
           $(qdutil_numparameters_m) \
           $(qml_empty_m) \
           $(qdutil_m) \

@@ -408,6 +408,12 @@ fpm run omp
        ref2: Patricia Vindel Zandbergen, Spiridoula Matsika, and Neepa T. Maitra
              J. Phys. Chem. Lett. 2022, 13, 7, 1785–1790
              https://doi.org/10.1021/acs.jpclett.1c04132
+## Model 'Thiophene'
+       LVC Model of Thiophene.
+       pot_name  = 'Thiophene'
+       ndim      = 27
+       nsurf     = 25
+       ref1: Model fitted by Jiri Suchan
 ## Model 'HONO'
        Model for the HONO.
        pot_name  = 'HONO'

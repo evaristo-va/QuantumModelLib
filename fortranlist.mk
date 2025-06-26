@@ -44,6 +44,7 @@ TwoD_RJDI2014_m.f90  \
 TwoD_Valahu2022_m.f90  \
 TwoD_m.f90  \
 Uracil_m.f90  \
+Thiophene_m.f90  \
 Vibronic_m.f90  \
 dmabn_m.f90  \
 fulvene_m.f90  \

@@ -353,6 +353,7 @@ CONTAINS
   USE QML_Vibronic_m
   USE QML_Uracil_m
   USE QML_Thiophene_m
+  USE QML_Benzene_m
   USE QML_fulvene_m
   USE QML_dmabn_m
 
@@ -788,6 +789,17 @@ CONTAINS
 
       allocate(QML_Thiophene_t :: QModel%QM)
       QModel%QM = Init_QML_Thiophene(QModel_in,read_param=read_nml,nio_param_file=nio_loc)
+
+    CASE ('benzene')   
+      !! === README ==   
+      !! LVC model for benzene
+      !! pot_name  = 'Benzene'
+      !! ndim      = 36  
+      !! nsurf     = 7  
+      !! === END README ==
+
+      allocate(QML_Benzene_t :: QModel%QM)
+      QModel%QM = Init_QML_Benzene(QModel_in,read_param=read_nml,nio_param_file=nio_loc)
 
     CASE ('fulvene')
       allocate(QML_fulvene_t :: QModel%QM)

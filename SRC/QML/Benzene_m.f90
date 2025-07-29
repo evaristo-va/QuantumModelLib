@@ -310,9 +310,11 @@ MODULE QML_Benzene_m
      ! Linear kappa term (K_i^{nu} * Q^{nu})
      Mat_OF_PotDia(i,i) = Mat_OF_PotDia(i,i) + DOT_PRODUCT(QModel%K(i,:),dnQ(:))
      DO i_dof=1,QModel%ndim
-       exponential = exp( QModel%a0(i,i_dof) * ( dnQ(i_dof) - QModel%q(i,i_dof) ) )
        ! Morse terms
-       Mat_OF_PotDia(i,i) = Mat_OF_PotDia(i,i) + QModel%d0(i,i_dof) * ( exponential - 1)**2 + QModel%e0(i,i_dof)
+       IF (QModel%d0(i,i_dof) /= 0.0_Rkind) THEN
+         exponential = exp( QModel%a0(i,i_dof) * ( dnQ(i_dof) - QModel%q(i,i_dof) ) )
+         Mat_OF_PotDia(i,i) = Mat_OF_PotDia(i,i) + QModel%d0(i,i_dof) * ( exponential - 1)**2 + QModel%e0(i,i_dof)
+       ENDIF
        DO j_dof=1,QModel%ndim
          ! Quadratic on-diagonal and off-diagonal terms ((1/2) * \Sum_nu\Sum_mu G_{i}^{munu} * Q^{nu} * Q^{mu})
          Mat_OF_PotDia(i,i) = Mat_OF_PotDia(i,i) + 0.5_Rkind * QModel%G(i,i_dof,j_dof)*dnQ(i_dof)*dnQ(j_dof)
@@ -328,8 +330,10 @@ MODULE QML_Benzene_m
          ! Linear lamba term (L_{ij}^{nu} * Q^{nu})
          Mat_OF_PotDia(i,j) = DOT_PRODUCT(QModel%L(i,j,:),dnQ(:))
          DO i_dof=1,QModel%ndim
+           DO j_dof=1,QModel%ndim
            ! quadratic mu term (MU_{ij}^{numu} * Q^{nu} * Q^{mu})
-           Mat_OF_PotDia(i,j) = Mat_OF_PotDia(i,j) + QModel%MU(i,j,i_dof,j_dof)*dnQ(i_dof)*dnQ(j_dof)
+           Mat_OF_PotDia(i,j) = Mat_OF_PotDia(i,j) + 0.5_Rkind * QModel%MU(i,j,i_dof,j_dof)*dnQ(i_dof)*dnQ(j_dof)
+           ENDDO
          ENDDO
          Mat_OF_PotDia(j,i) = Mat_OF_PotDia(i,j)
        ENDDO

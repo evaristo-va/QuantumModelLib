@@ -251,7 +251,16 @@ MODULE QML_Benzene_m
     deallocate(FileName)
 
     !--------------CONVERSION TO ATOMIC UNITS OF PARAMETERS-------------!
-    QModel%M   = Qmodel%M   * amu_to_au
+    QModel%M     = Qmodel%M     * amu_to_au
+    QModel%E     = Qmodel%E     * eV_to_au
+    QModel%K     = Qmodel%K     * eV_to_au
+    QModel%EPS   = Qmodel%EPS   * eV_to_au
+    QModel%L     = Qmodel%L     * eV_to_au
+    QModel%G     = Qmodel%G     * eV_to_au
+    QModel%MU    = Qmodel%MU    * eV_to_au
+    QModel%d0    = Qmodel%d0    * eV_to_au
+    QModel%e0    = Qmodel%e0    * eV_to_au
+    QModel%F     = Qmodel%F     * eV_to_au
 
     IF (debug) THEN
       write(out_unit,*) 'QModel%pot_name: ',QModel%pot_name
